@@ -14,14 +14,14 @@ function toggleInsp() {
         $(document.getElementsByClassName("card")).css({
             "border": "none"
         });
-        console.log(localStorage.getItem('insp'));
+        console.log("set insp value to:",localStorage.getItem('insp'));
     } else {
         localStorage.setItem('insp', "insp_true");
         mainView.classList.add("insp");
         $(document.getElementsByClassName("card")).css({
             "border": "3px solid rgba(0,0,0,.25)"
         });
-        console.log(localStorage.getItem('insp'));
+        console.log("set insp value to:",localStorage.getItem('insp'));
     }
 }
 
@@ -37,5 +37,5 @@ function toggleInsp() {
             "border": "3px solid rgba(0,0,0,.25)"
         });
     }
-    console.log(localStorage.getItem('insp'));
+    console.log("inspirational mode:",localStorage.getItem('insp'));
 })();

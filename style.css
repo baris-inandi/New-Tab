@@ -9,7 +9,7 @@
     --accent: #74daff;
     --card-shadow: 0px 4px 16px -8px #08080a;
     --subtle-shadow: 0px 0px 16px rgba(0, 0, 0, .75);
-    --insp-vignette: linear-gradient(rgba(0, 0, 4, .8), rgba(0, 0, 4, .8)), linear-gradient(rgba(252, 252, 255, .33), rgba(252, 252, 255, .33))
+    --insp-vignette: linear-gradient(rgba(0, 0, 4, .85), rgba(0, 0, 4, .85)), linear-gradient(rgba(255, 225, 220, .2), rgba(255, 225, 220, .2))
 }
 
 .theme-light {
@@ -26,7 +26,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: var(--insp-vignette), url(https://source.unsplash.com/1260x720/?abstract,snow,landscape,architecture);
+    background-image: var(--insp-vignette), url(https://source.unsplash.com/1920x1080/?landscape,architecture,abstract);
 }
 
 * {
@@ -193,7 +193,7 @@ p {
     border-radius: 99px;
     background: transparent;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     margin-right: 36px;
     margin-left: 20px;
     color: rgb(var(--foreground));
@@ -276,7 +276,7 @@ p {
 
 /* random quote */
 .quote-container {
-    width: 75%;
+    width: 65%;
     padding-right: 6px;
 }
 
@@ -292,6 +292,9 @@ p {
     text-align: right;
     font-style: italic;
 }
+
+/* web shortcuts */
+
 
 /* resize friendly layout */
 

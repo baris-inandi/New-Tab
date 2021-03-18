@@ -62,16 +62,16 @@ function setEngine(engine) {
         document.getElementById("search-input").placeholder = `Search ${engine}`;
         if (engine == "Google") {
             document.getElementById("engine-icon").className = 'fab fa-google';
-            console.log(`set engine to: ${engine}`)
+            console.log(`search engine: ${engine}`)
         } else if (engine == "Bing") {
             document.getElementById("engine-icon").className = 'fab fa-microsoft';
-            console.log(`set engine to: ${engine}`)
+            console.log(`search engine: ${engine}`)
         } else if (engine == "Yandex") {
             document.getElementById("engine-icon").className = 'fab fa-yandex-international';
-            console.log(`set engine to: ${engine}`)
+            console.log(`search engine: ${engine}`)
         } else if (engine == "DuckDuckGo") {
             document.getElementById("engine-icon").className = 'fas fa-globe';
-            console.log(`set engine to: ${engine}`)
+            console.log(`search engine: ${engine}`)
         }
     } else {
         setEngine("Google");
@@ -84,5 +84,4 @@ function setEngine(engine) {
     } else {
         setEngine('Google');
     }
-    console.log(localStorage.getItem('searchEngine'))
 })();

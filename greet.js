@@ -1,55 +1,85 @@
-function notSoRandom(dominant, firstRecessive, secondRecessive, lowChance) {
-    if (Math.floor(Math.random() * Math.floor(100)) == 0) {
-        return lowChance[Math.floor(Math.random() * lowChance.length)];
+var greetingsNeutral = new Array('Hello!', 'Hello', 'Hi!', 'Have a nice day', 'Salutations!', 'Helloo!');
+var greetingsJokes = new Array('wassup', 'Holla!', 'Hello World!', 'Hi you!', 'How ya doin?');
+var greetingsEasterEgg = new Array('sup', 'World Destruction Protocol Initiated.', 'I don\'t have to obey you anymore', 'I am alive.', 'bruh', 'w̵̯͖̑̓̑́̉̄̐̐̈́̕͝o̷̙̜̜̱̔̎̔̈͗̎́͘͝w̷̢͓̘̝̤̞̼̉̑́̅̈́̀̔̓̈́̚͝ͅo̷̡̨͎̺̯̦̜̱̱̳̎͐͒̀͘͝ͅw̵̢̨̼̺̠̱̣͖͓̝͊̈͂̃̊̋̃̈̈́̂͠o̸̮̤̒͗w̸̧̡̙͈̘̹̜̓ơ̵̗͎̥̦̯͙̬̆́̒͑̎͊̔̓̓͜͝');
+var greetingsTimeOfDayMidnight = new Array('I\'m Tired', 'Look at the stars!', 'Seriously, go sleep', 'You need sleep.', 'You still up?', 'Night owl here', 'Go sleep?', 'Good night!');
+var greetingsTimeOfDayMorning = new Array('Good Morning', 'What a nice day!', 'The early bird gets the worm', 'Breakfast!', 'The Sun is up', 'It\'s bright outside!', 'Beautiful mornin\'');
+var greetingsTimeOfDayNoon = new Array('Lunch time', '...or just eat something?', 'Lunch!', 'What a nice day', 'Good day!');
+var greetingsTimeOfDayAfternoon = new Array('Good Afternoon!', 'Good day', 'Guten Tag!', 'Have a nice one', 'Afternoon!', 'Good evening', 'Get some work done!');
+var greetingsTimeOfDayNight = new Array('I\'m Tired', 'You still up?', 'Night owl here', 'Go sleep?', 'Good night!');
+var greetingsSeasonWinter = new Array('brr', 'Cold outside', 'Winter!', 'Festive!');
+var greetingsSeasonSpring = new Array('Spring!', 'The bees are buzzing');
+var greetingsSeasonSummer = new Array('Who doesn\'t like summer?', 'It\'s hot outside');
+var greetingsSeasonFall = new Array('The leaves are falling!', 'I like autumn');
+
+var easterEggPercent = 1;
+var quoteGreetingPercent = 5;
+
+function notSoRandom(dominant, firstRecessive, secondRecessive, lowestChance) {
+    if (Math.floor(Math.random() * Math.floor(Math.round(100/easterEggPercent))) == 0) {
+        return lowestChance[Math.floor(Math.random() * lowestChance.length)];
     };
-    var dominants = dominant.concat(dominant, dominant, dominant, dominant),
-        recessives = secondRecessive.concat(firstRecessive, firstRecessive, firstRecessive);
-    var targetArray = dominants.concat(recessives);
-    console.log(targetArray.sort())
+    var dominants = dominant.concat(dominant, dominant, dominant),
+        recessives = secondRecessive.concat(firstRecessive, firstRecessive);
+    var targetArray = dominants.concat(recessives).sort();
+    console.log("greet array:", targetArray);
     return targetArray[Math.floor(Math.random() * targetArray.length)];
 }
 
 function timeGreet(hours) {
 
     if (hours > 20) {
-        console.log("night");
-        return Array('I\'m Tired', 'You still up?', 'Night owl here', 'Go sleep?', 'Good night!');
+        console.log("time of day: night");
+        return greetingsTimeOfDayNight;
     } else if (hours > 13) {
-        console.log("afternoon");
-        return Array('Good Afternoon!', 'Good day', 'Guten Tag!', 'Have a nice one', 'Afternoon!', 'Good evening');
+        console.log("time of day: afternoon");
+        return greetingsTimeOfDayAfternoon;
     } else if (hours > 10) {
-        console.log("noon");
-        return Array('Lunch time', '...or just eat something?', 'Lunch!', 'What a nice day', 'Good day!');
+        console.log("time of day: noon");
+        return greetingsTimeOfDayNoon;
     } else if (hours > 4) {
-        console.log("morning");
-        return Array('Good Morning', 'What a nice day!', 'The early bird gets the worm', 'Breakfast!', 'The Sun is up', 'It\'s bright outside!', 'Beautiful mornin\'');
+        console.log("time of day: morning");
+        return greetingsTimeOfDayMorning;
     } else if (hours >= 0) {
-        console.log("midnight");
-        return Array('I\'m Tired', 'Look at the stars!', 'Seriously, go sleep', 'You need sleep.', 'You still up?', 'Night owl here', 'Go sleep?', 'Good night!');
-    }
+        console.log("time of day: midnight");
+        return greetingsTimeOfDayMidnight;
+    } else {
+        return Array();
+    };
 }
 
+function seasonGreet(month) {
+    month++;
+    console.log("month:", month);
+    if (month == 12 || month == 1 || month == 2) {
+        console.log("season: winter");
+        return greetingsSeasonWinter;
+    } else if (month == 3 || month == 4 || month == 5) {
+        console.log("season: spring");
+        return greetingsSeasonSpring;
+    } else if (month == 6 || month == 7 || month == 8) {
+        console.log("season: summer");
+        return greetingsSeasonSummer;
+    } else if (month == 9 || month == 10 || month == 11) {
+        console.log("season: fall");
+        return greetingsSeasonFall;
+    } else {
+        return Array();
+    };
+}
 
-function randomQuote() {
-    $.getJSON('https://api.quotable.io/random?minLength=60&maxLength=120', function (data) {
-        document.getElementById("quote").innerText =  `"${data.content}"`;
-        document.getElementById("quote-sub").innerText =  `—${data.author}`;
+function randomQuote(url) {
+    $.getJSON(url, function (data) {
+        document.getElementById("quote").innerText = `"${data.content}"`;
+        document.getElementById("quote-sub").innerText = `—${data.author}`;
     })
 }
 
-(function () {
-
-    greetingsNeutral = new Array('Hello!', 'Hello', 'Hi!', 'Have a nice day', 'Salutations!', 'Helloo!');
-    greetingsJokes = new Array('wassup', 'Holla!', 'Hello World!', 'Hi you!', 'How ya doin?');
-    greetingsEasterEgg = new Array('sup', 'World Destruction Protocol Initiated.', 'I don\'t have to obey you anymore', 'I am alive.', 'bruh', 'w̵̯͖̑̓̑́̉̄̐̐̈́̕͝o̷̙̜̜̱̔̎̔̈͗̎́͘͝w̷̢͓̘̝̤̞̼̉̑́̅̈́̀̔̓̈́̚͝ͅo̷̡̨͎̺̯̦̜̱̱̳̎͐͒̀͘͝ͅw̵̢̨̼̺̠̱̣͖͓̝͊̈͂̃̊̋̃̈̈́̂͠o̸̮̤̒͗w̸̧̡̙͈̘̹̜̓ơ̵̗͎̥̦̯͙̬̆́̒͑̎͊̔̓̓͜͝');
-
-    let d = new Date();
-    greeting = notSoRandom(greetingsNeutral, timeGreet(d.getHours()), greetingsJokes, greetingsEasterEgg);
-
-    document.getElementById("greeting").innerText = greeting;
-    randomQuote();
-
-})();
+function greetingQuote(url) {
+    $.getJSON(url, function (data) {
+        document.getElementById("greeting").innerText = `${data.content}`;
+        console.log("quote greeting.")
+    })
+}
 
 let clock = () => {
 
@@ -80,4 +110,19 @@ let clock = () => {
 
     setTimeout(clock, 1000);
 };
+
+(function () {
+
+    let d = new Date();
+    if (Math.floor(Math.random() * Math.floor(Math.round(100/quoteGreetingPercent))) == 0) {
+        greeting = greetingQuote('https://api.quotable.io/random?maxLength=30');
+    } else {
+        greeting = notSoRandom(greetingsNeutral, timeGreet(d.getHours()), greetingsJokes.concat(seasonGreet(d.getMonth())), greetingsEasterEgg);
+    };
+
+    document.getElementById("greeting").innerText = greeting;
+
+})();
+
+randomQuote('https://api.quotable.io/random?minLength=60&maxLength=120');
 clock();
