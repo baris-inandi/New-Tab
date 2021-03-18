@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/9da952c940.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <title>New Tab</title>
+</head>
+
+<body>
+    <div class="main-view" id="main">
+        <div id="compact">
+            <div class="compact-card">
+                <p>compact mode</p>
+            </div>
+        </div>
+        <div class="cards">
+            <div class="card-section left-section">
+                <div class="search-container">
+                    <div class="card search-card">
+                        <div class="searchbar-container">
+                            <i id="engine-icon"></i>
+                            <input id="search-input" class="search-input" placeholder="Search">
+                            <i id="search-button" class="pointer fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="area-large">
+                    <div class="card column">
+                        <div class="greeting-container">
+                            <p id="greeting"></p>
+                            <div>
+                                <div class="datetime">
+                                    <p id="hrs-mins"></p>
+                                    <p id="secs"></p>
+                                    <p id="meridiem"></p>
+                                </div>
+                                <div class="datetime date">
+                                    <p id="day"></p>
+                                    <p id="month"></p>
+                                    <p id="dayofmonth"></p>
+                                    <p id="year"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theme-switch-container">
+                            <i class="fas fa-adjust"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-section right-section">
+                <div class="area">
+                    <div class="card">
+                        <div class="quote-container">
+                            <p id="quote"></p>
+                            <p id="quote-sub"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="area">
+                    <div class="card">
+                        <div class="web-shortcuts"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="greet.js"></script>
+<script type="text/javascript" src="search.js"></script>
+<script type="text/javascript" src="inspirational.js"></script>
+
+</html>

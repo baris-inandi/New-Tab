@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+/* set up layout */
+
+.theme-dark {
+    --background: 32, 33, 36;
+    --foreground: 209, 212, 220;
+    --card: 43, 44, 49;
+    --accent: #74daff;
+    --card-shadow: 0px 4px 16px -8px #08080a;
+    --subtle-shadow: 0px 0px 16px rgba(0, 0, 0, .75);
+    --insp-vignette: linear-gradient(rgba(0, 0, 4, .8), rgba(0, 0, 4, .8)), linear-gradient(rgba(252, 252, 255, .33), rgba(252, 252, 255, .33))
+}
+
+.theme-light {
+    --background: 208, 210, 216;
+    --foreground: 107, 110, 112;
+    --card: 231, 232, 238;
+    --accent: #1F3EF9;
+    --card-shadow: 0px 4px 24px -20px #272727;
+    --subtle-shadow: 0px 0px 6px rgb(186, 210, 255);
+    --insp-vignette: radial-gradient(rgba(100, 120, 160, .5), rgba(100, 102, 120, .8));
+}
+
+.insp {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: var(--insp-vignette), url(https://source.unsplash.com/1260x720/?abstract,snow,landscape,architecture);
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.fab,
+.fas {
+    color: rgb(var(--foreground));
+    padding: 2px;
+}
+
+html,
+body {
+    overflow: hidden;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: rgb(var(--background));
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 400;
+    user-select: none;
+}
+
+a {
+    user-select: none;
+    user-drag: none;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+/* card */
+.main-view {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(var(--background));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    transition: .45s ease;
+    transition-delay: .05s;
+}
+
+
+.cards {
+    width: 85vw;
+    height: 80vh;
+    max-width: 1100px;
+    max-height: 720px;
+    display: flex;
+    flex-direction: row;
+}
+
+.compact-card {
+    padding: 20px;
+}
+
+p {
+    color: rgb(var(--foreground));
+    text-align: center;
+}
+
+/* card sections */
+.card-section {
+    margin: 10px;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.area {
+    margin: 10px;
+    flex: 1;
+}
+
+.search-container {
+    flex: 1;
+}
+
+.area-large {
+    flex: 11;
+}
+
+.left-section {
+
+    display: flex;
+    flex-direction: column;
+    flex: 8;
+}
+
+.right-section {
+    display: flex;
+    flex: 5;
+    margin: 0;
+}
+
+.card {
+    height: 100%;
+    width: 100%;
+    background: rgb(var(--card));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+.search-container {
+    margin-bottom: 21px;
+}
+
+#compact {
+    display: none;
+}
+
+.column {
+    flex-direction: column;
+}
+
+/* animation */
+
+@keyframes intro {
+
+    0%,
+    25% {
+        border-radius: calc(var(--card-radius) / 4);
+        opacity: 0;
+        transform: translateY(120px);
+    }
+
+    100% {
+        border-radius: var(--card-radius);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cards {
+    animation: .5s intro;
+}
+
+/* search bar */
+
+.search-card {
+    border-radius: 999px;
+}
+
+.search-container {
+    height: 60px;
+}
+
+.search-input {
+    width: 90%;
+    border-radius: 99px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    margin-right: 36px;
+    margin-left: 20px;
+    color: rgb(var(--foreground));
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 99px;
+    width: 90%;
+    padding: 0px 16px;
+}
+
+#search-button {
+    padding: 12px 0px 12px 8px;
+}
+
+/* greeting */
+#greeting {
+    font-family: Arial;
+    font-size: 56px;
+}
+
+.datetime {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+#hrs-mins {
+    font-size: 36px;
+}
+
+#secs,
+#meridiem {
+    margin-left: 1px;
+}
+
+#secs {
+    font-size: 20px;
+}
+
+#meridiem {
+    font-size: 22px;
+    padding-left: 4px;
+    font-weight: bold;
+}
+
+.datetime * {
+    margin: 0;
+}
+
+.greeting-container {
+    width: 70%;
+}
+
+.date * {
+    padding: 2px;
+    font-size: 16px;
+}
+
+#greeting {
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.date {
+    padding-top: 2px;
+}
+
+#day {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* random quote */
+.quote-container {
+    width: 75%;
+    padding-right: 6px;
+}
+
+#quote {
+    line-height: 1.33;
+    font-size: 18px;
+    text-align: left;
+}
+
+#quote-sub {
+    margin: 0;
+    font-size: 14px;
+    text-align: right;
+    font-style: italic;
+}
+
+/* resize friendly layout */
+
+@media only screen and (max-width: 1000px) {
+    .cards {
+        flex-direction: column;
+        animation: .65s intro;
+    }
+
+    .right-section {
+        flex-direction: row;
+        animation: .65s intro;
+    }
+
+    #greeting {
+        font-size: 40px;
+    }
+
+    .cards {
+        max-width: 720px;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    #compact {
+        display: flex;
+        animation: .65s intro;
+    }
+
+    .cards {
+        display: none;
+        animation: .65s intro;
+    }
+}
+
+
+@media only screen and (max-width: 720px) {
+    #compact {
+        display: flex;
+        animation: .65s intro;
+    }
+
+    .cards {
+        display: none;
+        animation: .65s intro;
+    }
+}
+
+@media only screen and (max-height: 400px) {
+
+    .cards,
+    #compact {
+        display: none;
+        animation: .65s intro;
+    }
+}
+
+
+
+/* #### temporary #### */
+.theme-switch-container {
+    display: none;
+}
