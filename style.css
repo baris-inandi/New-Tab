@@ -55,7 +55,6 @@ body {
 
 a {
     user-select: none;
-    user-drag: none;
 }
 
 .pointer:hover {
@@ -293,6 +292,8 @@ p {
     font-style: italic;
 }
 
+/* compact */
+
 /* web shortcuts */
 
 
@@ -318,7 +319,7 @@ p {
     }
 }
 
-@media only screen and (max-height: 600px) {
+@media only screen and (max-height: 650px) {
     #compact {
         display: flex;
         animation: .65s intro;
@@ -352,7 +353,14 @@ p {
     }
 }
 
+@media only screen and (max-width: 360px) {
 
+    .cards,
+    #compact {
+        display: none;
+        animation: .65s intro;
+    }
+}
 
 /* #### temporary #### */
 .theme-switch-container {
